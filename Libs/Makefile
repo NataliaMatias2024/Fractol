@@ -6,7 +6,7 @@
 #    By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 19:25:38 by namatias          #+#    #+#              #
-#    Updated: 2025/12/14 12:35:15 by namatias         ###   ########.fr        #
+#    Updated: 2025/12/14 14:09:37 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,12 +68,9 @@ PRINTF_SRC = src/ft_printf/ft_put_c.c \
 			 src/ft_printf/ft_put_x_upper.c \
 
 SRC_DIR =	./src/
-OBJ_DIR =	./obj/
 
 FILESC = $(LIBFT_SRC) $(PRINTF_SRC)
 FILESO = $(FILESC:.c=.o)
-
-OBJ = $(addprefix $(OBJ_DIR), $(FILES_O))
 
 ################################################################################
 #                               Cores / Colors                                 #
@@ -96,7 +93,6 @@ $(NAME): $(FILESO)
 	@echo "$(GREEN) Libft compiled$(RESET)"
 
 %.o : %.c
-	@mkdir -p $(OBJ_DIR)
 	@$(CC) -I. $(CFLAGS) -c $< -o $@
 
 clean:

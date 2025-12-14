@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:57:56 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/14 12:29:37 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/14 14:08:57 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 size_t	ft_strlcat(char *s1, const char *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 ;
-//Printft
 int		ft_put_c(char c);
 int		ft_put_p(void *c);
 int		ft_put_s(char *c);
