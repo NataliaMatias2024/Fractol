@@ -12,7 +12,19 @@
 
 #include "fractol.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	ft_printf("Criando e Testando Makefile\n");
+	if (argc == 2 && check_args(argv[1], "mandelbrot"))
+	{
+		//TODO : ft_display_mandelbrot();
+		ft_printf("Mano Brot\n");
+	}
+	else if (argc == 4 && check_args(argv[1], "julia"))
+	{
+		//TODO : ft_display_julia();
+		ft_printf("Mana Ju\n");
+	}
+	else
+		ft_display_options();
+	return (EXIT_SUCCESS);
 }
