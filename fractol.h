@@ -20,4 +20,7 @@
 # include "./Libs/libft.h"
 # include "./minilibx-linux/mlx.h"
 
+int		check_args(char *argv);
+void	ft_display_options(void);
+
 #endif

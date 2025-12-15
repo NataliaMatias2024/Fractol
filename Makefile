@@ -23,6 +23,7 @@ SRC_DIR =	./src/
 OBJ_DIR =	./obj/
 
 FILES_C = main.c \
+		  main_utils.c \
 
 FILES_O = $(FILES_C:.c=.o)
 
@@ -37,7 +38,7 @@ IFLAGS = -I$(LIB_DIR)include
 LDFLAGS = -L $(LIB_DIR) -lft
 
 MLX_DIR = ./minilibx-linux
-MLX = $(MLX_DIR)/minilibx.a
+MLX = $(MLX_DIR)/libmlx.a
 MLX_INCLUDES = -I$(MLX_DIR)
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
