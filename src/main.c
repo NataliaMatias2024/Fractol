@@ -14,15 +14,19 @@
 
 int	main(int argc, char **argv)
 {
+	t_fractal	fractal;
+
 	if (argc == 2 && check_args(argv[1], "mandelbrot"))
 	{
+		fractal.name = argv[1];
 		//TODO : ft_display_mandelbrot();
-		ft_printf("Mano Brot\n");
+		ft_printf("Mano Brot\n, %s\n", fractal.name);
 	}
 	else if (argc == 4 && check_args(argv[1], "julia"))
 	{
+		fractal.name = argv[1];
 		//TODO : ft_display_julia();
-		ft_printf("Mana Ju\n");
+		ft_printf("Mana Ju\n, %s\n", fractal.name);
 	}
 	else
 		ft_display_options();
