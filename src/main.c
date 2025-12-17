@@ -20,12 +20,18 @@ int	main(int argc, char **argv)
 	{
 		fractal.name = argv[1];
 		//TODO : ft_display_mandelbrot();
+		fractal_init(&fractal);
+		fractal_render(&fractal);
+		mlx_loop(fractal.mlx_connection);
 		ft_printf("Mano Brot\n, %s\n", fractal.name);
 	}
 	else if (argc == 4 && check_args(argv[1], "julia"))
 	{
 		fractal.name = argv[1];
 		//TODO : ft_display_julia();
+		fractal_init(&fractal);
+		fractal_render(&fractal);
+		mlx_loop(fractal.mlx_connection);
 		ft_printf("Mana Ju\n, %s\n", fractal.name);
 	}
 	else

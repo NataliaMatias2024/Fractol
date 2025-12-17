@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:05:06 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/17 09:01:34 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/17 13:58:39 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_args(const char *argv, const char *fractal)
 	size_t		len_argv;
 	size_t		len_fractal;
 
-	flag_ok = 0; 
+	flag_ok = 0;
 	if (argv == NULL || fractal == NULL)
 		return (flag_ok);
 	len_argv = ft_strlen(argv);

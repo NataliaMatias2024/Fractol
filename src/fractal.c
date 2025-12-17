@@ -18,70 +18,32 @@ static void	malloc_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void fractal_init(t_fractal *fractal)
+void	data_init(t_fractal *fractal)
+{
+	fractal->escape_value = 4; //Hipotenusa = ca² + co²
+	fractal->iterations_definitions = 42;
+}
+
+void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_connection = mlx_init();
 	if (fractal->mlx_connection == NULL)
 		malloc_error();
-	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, WIDTH,
-										HEIGHT, fractal->name); title:
+	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, WIDTH, HEIGHT, fractal->name);
 	if (fractal->mlx_window == NULL)
 	{
-		mlx_destroy_display(fractal->mlx_connection); mlx_ptr:
-		free(fractal->mlx_connection); ptr:
-		malloc_error();		
-	}
-	fractal->img_ptr = mlx_new_image(fractal->mlx_connection, WIDTH, 
-								     HEIGHT); width: height:
-	if (fractal->img_ptr == NULL)
-	{
-		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window); mlx_ptr: win_ptr:
-		mlx_destroy_display(fractal->mlx_connection); mlx_ptr:
-		free(fractal->mlx_connection); ptr:
+		mlx_destroy_display(fractal->mlx_connection);
+		free(fractal->mlx_connection);
 		malloc_error();
 	}
-	fractal->img_ptr = mlx_get_data_addr(fractal->img_ptr, fractal->bits_per_pixel, 
-										fractal->line_len, fractal->endian)
-	//events_init(); //TODO
-	//data_init(); //TODO
-}
-
-void handle_pixel(int x, int y, t_fractal *fractal)
-{
-	t_complex	z;
-	t_complex	c;
-
-	z.x = 0.0;
-	z.y = 0.0;
-
-	c.x = map(x, -2, +2, 0, 799);
-	c.y = map(y, +2, -2, 0, 799);
-
-	while ()
+	fractal->img_ptr = mlx_new_image(fractal->mlx_connection, WIDTH, HEIGHT);
+	if (fractal->img_ptr == NULL)
 	{
-		z = sum_complex(square_complex(z), c);
-		if ()
-		{
-			my_pixel_display(); //TODO
-			return ;
-		}
+		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
+		mlx_destroy_display(fractal->mlx_connection);
+		free(fractal->mlx_connection);
+		malloc_error();
 	}
-}
-
-void fractal_render(t_fractal *fractal)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			handle_pixel(x, y, fractal);
-			x++;
-		}
-		y++;
-	}
+	fractal->pixels_ptr = mlx_get_data_addr(fractal->img_ptr, &fractal->bits_per_pixel, &fractal->line_len, &fractal->endian);
+	data_init(fractal);
 }
