@@ -35,6 +35,7 @@ LIBFT_SRC = src/Libft/ft_atoi.c \
 			src/Libft/ft_substr.c \
 			src/Libft/ft_putnbr.c \
 			src/Libft/ft_strcmp.c \
+			src/Libft/ft_atodbl.c \
 			src/Libft/ft_isalpha.c \
 	   		src/Libft/ft_isdigit.c \
 			src/Libft/ft_isalnum.c \
