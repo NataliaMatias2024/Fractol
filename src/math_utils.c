@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
+/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 09:17:44 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/17 14:23:08 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:13:44 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,16 @@ t_complex	square_complex(t_complex z)
 	result.x = (z.x * z.x) - (z.y * z.y);
 	result.y = 2 * z.x * z.y;
 	return (result);
+}
+
+int	ft_interpolate_color(int color1, int color2, double fraction)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = ((color1 >> 16) & 0xFF) + fraction * (((color2 >> 16) & 0xFF) - ((color1 >> 16) & 0xFF));
+	g = ((color1 >> 8) & 0xFF) + fraction * (((color2 >> 8) & 0xFF) - ((color1 >> 8) & 0xFF));
+	b = (color1 & 0xFF) + fraction * ((color2 & 0xFF) - (color1 & 0xFF));
+	return ((r << 16) | (g << 8) | b);
 }

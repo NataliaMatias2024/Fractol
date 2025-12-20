@@ -17,23 +17,9 @@ int	main(int argc, char **argv)
 	t_fractal	fractal;
 
 	if (argc == 2 && check_args(argv[1], "mandelbrot"))
-	{
-		fractal.name = argv[1];
-		//TODO : ft_display_mandelbrot();
-		fractal_init(&fractal);
-		fractal_render(&fractal);
-		mlx_loop(fractal.mlx_connection);
-		ft_printf("Mano Brot\n, %s\n", fractal.name);
-	}
+		ft_display_fractal(&fractal, argv[1], 0, 0);
 	else if (argc == 4 && check_args(argv[1], "julia"))
-	{
-		fractal.name = argv[1];
-		//TODO : ft_display_julia();
-		fractal_init(&fractal);
-		fractal_render(&fractal);
-		mlx_loop(fractal.mlx_connection);
-		ft_printf("Mana Ju\n, %s\n", fractal.name);
-	}
+		ft_display_fractal(&fractal, argv[1], ft_atodbl(argv[2]), ft_atodbl(argv[3]));
 	else
 		ft_display_options();
 	return (EXIT_SUCCESS);

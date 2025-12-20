@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
+/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:05:06 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/17 13:58:39 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/20 12:31:21 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,12 @@ void	ft_display_options(void)
 	ft_putstr_fd("|----------------------------------------|\n", 1);
 	ft_putstr_fd("| ./fractol mandelbrot                   |\n", 1);
 	ft_putstr_fd("| ./fractol julia <real> <i>             |\n", 1);
+	ft_putstr_fd("|                                        |\n", 1);
+	ft_putstr_fd("|-----[ Example of Julia's fractal ]-----|\n", 1);
+	ft_putstr_fd("| To execute correctly, use the commands:|\n", 1);
+	ft_putstr_fd("|----------------------------------------|\n", 1);
+	ft_putstr_fd("| ./fractol julia -0.4 0.6               |\n", 1);
+	ft_putstr_fd("| ./fractol julia  0.285 0.01            |\n", 1);
+	ft_putstr_fd("| ./fractol julia -0.835 -0.2321         |\n", 1);
 	ft_putstr_fd("└────────────────────────────────────────┘\n", 1);
 }
