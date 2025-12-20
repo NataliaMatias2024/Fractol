@@ -24,9 +24,10 @@ OBJ_DIR =	./obj/
 
 FILES_C = main.c \
 		  main_utils.c \
-		  fractal.c \
+		  inits.c \
 		  math_utils.c \
-		  render.c
+		  render.c \
+		  events.c \
 
 FILES_O = $(FILES_C:.c=.o)
 
