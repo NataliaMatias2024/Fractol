@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 15:31:29 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/20 09:09:10 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/20 22:58:10 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	set_julia(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = ft_interpolate_color(DARK_GREEN, GOLD, (double)i / fractal->iterations_definitions);
+			color = ft_interpolate_color(DARK_BLUE, GOLD, (double)i
+					/ fractal->iterations_definitions);
 			ft_my_pixel_display(x, y, fractal, color);
 			return ;
 		}
@@ -55,7 +56,8 @@ static void	set_mandelbrot(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, BLUE, GREEN, fractal->iterations_definitions);
+			color = ft_interpolate_color(DARK_BLUE, GOLD, (double)i
+					/ fractal->iterations_definitions);
 			ft_my_pixel_display(x, y, fractal, color);
 			return ;
 		}
@@ -64,11 +66,12 @@ static void	set_mandelbrot(int x, int y, t_fractal *fractal)
 	ft_my_pixel_display(x, y, fractal, BLACK);
 }
 
-void	ft_my_pixel_display(int x, int y, t_fractal *img, int color)
+void	ft_my_pixel_display(int x, int y, t_fractal *fractal, int color)
 {
 	char	*pixel;
 
-	pixel = img->pixels_ptr + (y * img->line_len) + (x * (img->bits_per_pixel / 8));
+	pixel = fractal->pixels_ptr + (y * fractal->line_len) + (x
+			* (fractal->bits_per_pixel / 8));
 	*(unsigned int *)pixel = color;
 }
 
@@ -79,7 +82,7 @@ void	ft_fractal_render(t_fractal *fractal)
 	int	is_mandel;
 
 	y = 0;
-	is_mandel = check_args(fractal->name, "mandelbrot");
+	is_mandel = check_name(fractal->name, "mandelbrot");
 	while (y < HEIGHT)
 	{
 		x = 0;
@@ -93,5 +96,6 @@ void	ft_fractal_render(t_fractal *fractal)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fractal->connection, fractal->window, fractal->img_ptr, 0, 0);
+	mlx_put_image_to_window(fractal->connection, fractal->window,
+		fractal->img_ptr, 0, 0);
 }

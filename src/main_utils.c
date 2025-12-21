@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:05:06 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/20 12:31:21 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/20 22:27:21 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	check_args(const char *argv, const char *fractal)
+int	check_name(const char *argv, const char *fractal)
 {
 	int			flag_ok;
 	size_t		len_argv;
@@ -26,6 +26,31 @@ int	check_args(const char *argv, const char *fractal)
 	if (len_argv == len_fractal && (ft_strncmp(argv, fractal, len_argv) == 0))
 		flag_ok = 1;
 	return (flag_ok);
+}
+
+int	check_number(char *argv)
+{
+	int	i;
+	int	dot;
+
+	i = 0;
+	dot = 0;
+	while (argv[i])
+	{
+		if (argv[i] == '-')
+			i++;
+		else if (ft_isdigit(argv[i]) || argv[i] == '.')
+		{
+			if (argv[i] == '.')
+				dot += 1;
+			i++;
+		}
+		else
+			return (0);
+	}
+	if (dot > 1)
+		return (0);
+	return (1);
 }
 
 void	ft_display_options(void)

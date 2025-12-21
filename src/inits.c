@@ -27,12 +27,12 @@ static void	ft_data_init(t_fractal *fractal)
 	fractal->zoom = 1.0;
 }
 
-static void ft_events_init(t_fractal *fractal)
+static void	ft_events_init(t_fractal *fractal)
 {
 	mlx_hook(fractal->window, KeyPress, KeyPressMask, ft_key, fractal);
 	mlx_hook(fractal->window, ButtonPress, ButtonPressMask, ft_mouse, fractal);
-	mlx_hook(fractal->window, DestroyNotify, StructureNotifyMask,
-			 ft_close, fractal);
+	mlx_hook(fractal->window, DestroyNotify, StructureNotifyMask, ft_close,
+		fractal);
 }
 
 void	ft_fractal_init(t_fractal *fractal)
@@ -40,8 +40,8 @@ void	ft_fractal_init(t_fractal *fractal)
 	fractal->connection = mlx_init();
 	if (fractal->connection == NULL)
 		malloc_error();
-	fractal->window = mlx_new_window(fractal->connection, WIDTH,
-									 HEIGHT, fractal->name);
+	fractal->window = mlx_new_window(fractal->connection, WIDTH, HEIGHT,
+			fractal->name);
 	if (fractal->window == NULL)
 	{
 		mlx_destroy_display(fractal->connection);
@@ -56,20 +56,18 @@ void	ft_fractal_init(t_fractal *fractal)
 		free(fractal->connection);
 		malloc_error();
 	}
-	fractal->pixels_ptr = mlx_get_data_addr(fractal->img_ptr, 
-											&fractal->bits_per_pixel, 
-											&fractal->line_len, 
-											&fractal->endian);
+	fractal->pixels_ptr = mlx_get_data_addr(fractal->img_ptr,
+			&fractal->bits_per_pixel, &fractal->line_len, &fractal->endian);
 	ft_events_init(fractal);
 	ft_data_init(fractal);
 }
 
 void	ft_display_fractal(t_fractal *fractal, char *name, double x, double y)
 {
-		fractal->name = name;
-		fractal->julia_x = x;
-		fractal->julia_y = y;
-		ft_fractal_init(fractal);
-		ft_fractal_render(fractal);
-		mlx_loop(fractal->connection);
+	fractal->name = name;
+	fractal->julia_x = x;
+	fractal->julia_y = y;
+	ft_fractal_init(fractal);
+	ft_fractal_render(fractal);
+	mlx_loop(fractal->connection);
 }
