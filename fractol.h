@@ -68,7 +68,7 @@ double		map(double unscaled_num, double new_min, double new_max,
 				double old_max);
 
 int			check_name(const char *argv, const char *fractal);
-int			check_number(char *argv);
+int			check_number(char *argv, int i);
 void		ft_display_options(void);
 void		ft_fractal_init(t_fractal *fractal);
 void		ft_fractal_render(t_fractal *fractal);

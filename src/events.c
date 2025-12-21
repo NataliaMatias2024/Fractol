@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 17:12:52 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/20 19:05:56 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/21 10:47:57 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_key(int keysym, t_fractal *fractal)
 	if (keysym == XK_Escape)
 		ft_close(fractal);
 	else if (keysym == XK_Right)
-		fractal->shift_x -= (0.5 * fractal->zoom);
-	else if (keysym == XK_Left)
 		fractal->shift_x += (0.5 * fractal->zoom);
+	else if (keysym == XK_Left)
+		fractal->shift_x -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Up)
 		fractal->shift_y += (0.5 * fractal->zoom);
 	else if (keysym == XK_Down)

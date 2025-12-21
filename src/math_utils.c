@@ -6,23 +6,23 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 09:17:44 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/20 22:07:16 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/21 09:49:31 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	map(double unscaled_num, double new_min, double new_max, double old_max)
+double	map(double unscaled_num, double old_min, double old_max, double max)
 {
-	return ((new_max - new_min) * unscaled_num / old_max + new_min);
+	return ((old_max - old_min) * unscaled_num / max + old_min);
 }
 
-t_complex	sum_complex(t_complex z1, t_complex z2)
+t_complex	sum_complex(t_complex z1, t_complex c)
 {
 	t_complex	result;
 
-	result.x = z1.x + z2.x;
-	result.y = z1.y + z2.y;
+	result.x = z1.x + c.x;
+	result.y = z1.y + c.y;
 	return (result);
 }
 

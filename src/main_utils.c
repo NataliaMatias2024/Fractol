@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 15:05:06 by namatias          #+#    #+#             */
-/*   Updated: 2025/12/20 22:27:21 by namatias         ###   ########.fr       */
+/*   Updated: 2025/12/21 11:02:32 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,20 @@ int	check_name(const char *argv, const char *fractal)
 	return (flag_ok);
 }
 
-int	check_number(char *argv)
+int	check_number(char *argv, int i)
 {
-	int	i;
 	int	dot;
+	int	sign;
 
-	i = 0;
 	dot = 0;
+	sign = 0;
 	while (argv[i])
 	{
-		if (argv[i] == '-')
+		if (argv[i] == '-' || argv[i] == '+')
+		{
+			sign += 1;
 			i++;
+		}
 		else if (ft_isdigit(argv[i]) || argv[i] == '.')
 		{
 			if (argv[i] == '.')
@@ -48,7 +51,7 @@ int	check_number(char *argv)
 		else
 			return (0);
 	}
-	if (dot > 1)
+	if (dot > 1 || sign > 1)
 		return (0);
 	return (1);
 }
