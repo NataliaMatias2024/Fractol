@@ -27,7 +27,7 @@ FILES_C = main.c \
 		  inits.c \
 		  math_utils.c \
 		  render.c \
-		  events.c \
+		  events.c
 
 FILES_O = $(FILES_C:.c=.o)
 
@@ -38,7 +38,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(FILES_O))
 
 LIB_DIR =	./Libs/
 LIBFT = $(LIB_DIR)libft.a
-IFLAGS = -I$(LIB_DIR)include
+LIBFT_INCLUDES = -I$(LIB_DIR)include
 LDFLAGS = -L $(LIB_DIR) -lft
 
 MLX_DIR = ./minilibx-linux
@@ -75,17 +75,17 @@ $(LIBFT):
 	@$(MAKE) -C $(LIB_DIR)
 
 $(MLX):
-	@$(MAKE) -C $(MLX_DIR)
+	@$(MAKE) -C $(MLX_DIR) --silent --no-print-directory > /dev/null 2>&1
 
 clean:
 	@rm -f $(OBJ_DIR)*.o
-	@make clean -C $(LIB_DIR) --silent
-	@make clean -C $(MLX_DIR) --silent
+	@$(MAKE) clean -C $(LIB_DIR) --silent --no-print-directory
+	@$(MAKE) clean -C $(MLX_DIR) --silent --no-print-directory > /dev/null 2>&1
 	@echo "$(RED) Fractol *.o files deleted$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) fclean -C $(LIB_DIR) --silent
+	@$(MAKE) fclean -C $(LIB_DIR) --silent --no-print-directory
 	@echo "$(RED) Fractol executable deleted$(RESET)"
 
 re:
